@@ -9,20 +9,17 @@ import { RequestsService } from '../services/requests.service';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit, AfterViewInit {
-  public displayedColumns: string[] = ['customerName', 'type', 'amount', 'created_at'];
-  @ViewChild(MatPaginator) paginator!: MatPaginator
   public isLoading = true
   public error = ''
 
-  public ELEMENT_DATA = [ ]
-  public dataSource = new MatTableDataSource(this.ELEMENT_DATA)
+  public dataSource:any = []
+  public filterHistory = ''
   
   constructor(public request: RequestsService) { }
   ngOnInit(): void {
     this.request.history().subscribe((res:any)=>{
       this.isLoading = false
-      this.ELEMENT_DATA = res.transactions
-      this.dataSource.paginator = this.paginator;
+      this.dataSource = res.transactions
       console.log(res.transactions)            
     }, (err:any)=>{
       this.isLoading = false
