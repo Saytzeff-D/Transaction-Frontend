@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HistoryPipe } from './pipes/history.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     SideNavComponent,
     DashboardComponent,
     StatisticsComponent,
-    LoginComponent
+    LoginComponent,
+    HistoryPipe
   ],
   imports: [
     BrowserModule,
