@@ -1,10 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table'
+import { MatPaginator } from '@angular/material/paginator';
+import { RequestsService } from '../services/requests.service';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
-export class HistoryComponent {
+export class HistoryComponent implements OnInit, AfterViewInit {
+  public displayedColumns: string[] = ['customerName', 'type', 'amount', 'created_at'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator
+  public isLoading = true
+  public error = ''
+
+  public ELEMENT_DATA = [ ]
+  public dataSource = new MatTableDataSource(this.ELEMENT_DATA)
+  
+  constructor(public request: RequestsService) { }
+  ngOnInit(): void {
+    this.request.history().subscribe((res:any)=>{
+      this.isLoading = false
+      this.ELEMENT_DATA = res.transactions
+      this.dataSource.paginator = this.paginator;
+      console.log(res.transactions)            
+    }, (err:any)=>{
+      this.isLoading = false
+      this.error = 'Error Occured'
+    })      
+  }
+  ngAfterViewInit() {
+    // this.dataSource.paginator = this.paginator;
+  }
 
 }
