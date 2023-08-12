@@ -16,7 +16,7 @@
         </a>
         <a mat-list-item routerLinkActive="active rounded my-2 me-5 p-1 mb-2 shadow-lg" routerLink="history">
           <span [class]="router.url == '/admin/history' ? 'bg-dark shadow p-1 rounded mx-2 text-white' : 'bg-white shadow p-1 rounded mx-2 text-dark'" >
-            <i [class]="router.url == '/admin/history' ? 'text-white fa fa-tachometer' : 'fa fa-tachometer text-dark'" ></i>
+            <i [class]="router.url == '/admin/history' ? 'text-white fa fa-history' : 'fa fa-history text-dark'" ></i>
           </span>
           <span [class]="router.url == '/admin/history' ? 'text-dark' : 'text-white'">
             History
@@ -24,7 +24,7 @@
         </a>    
         <a mat-list-item routerLinkActive="active rounded my-2 me-5 p-1 mb-2 shadow-lg" routerLink="statistics">
             <span [class]="router.url == '/admin/statistics' ? 'bg-dark shadow p-1 rounded mx-2 text-white' : 'bg-white shadow p-1 rounded mx-2 text-white'" >
-              <i [class]="router.url == '/admin/statistics' ? 'text-white fa fa-tachometer' : 'fa fa-tachometer text-dark'" ></i>
+              <i [class]="router.url == '/admin/statistics' ? 'text-white fa fa-bar-chart' : 'fa fa-bar-chart text-dark'" ></i>
             </span>
             <span [class]="router.url == '/admin/statistics' ? 'text-dark' : 'text-white'">
               Statistics
@@ -32,7 +32,7 @@
           </a>   
           <a mat-list-item routerLinkActive="active rounded my-2 me-5 p-1 mb-2 shadow-lg" routerLink="login">
             <span [class]="router.url == '/admin/login' ? 'bg-dark shadow p-1 rounded mx-2 text-white' : 'bg-white shadow p-1 rounded mx-2 text-white'" >
-              <i [class]="router.url == '/admin/login' ? 'text-white fa fa-tachometer' : 'fa fa-tachometer text-dark'" ></i>
+              <i [class]="router.url == '/admin/login' ? 'text-white fa fa-sign-out' : 'fa fa-sign-out text-dark'" ></i>
             </span>
             <span class="text-white">
               Logout
