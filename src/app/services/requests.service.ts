@@ -15,4 +15,7 @@ export class RequestsService {
   history(){
     return this.http.get(`${this.api}transact/all`)
   }
+  login(payload:any){
+    return this.http.post(`${this.api}user/login`, payload)
+  }
 }
