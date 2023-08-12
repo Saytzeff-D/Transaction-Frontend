@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestsService } from '../services/requests.service';
 
 @Component({
   selector: 'app-statistics',
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class StatisticsComponent implements OnInit {
   public amount = 700
 
+  public isLoading = true
+  public error = ''
+  public transactions = 0
+  public transfer = 0
+  public withdrawal = 0
+  public others =0
   public lineChartData = [
     {
-    data: [20000, 12500, 9000 ],    
+    data: [],    
     barThickness: 17,
     borderRadius: 5,
     // backgroundColor: 'green',
@@ -26,9 +33,37 @@ export class StatisticsComponent implements OnInit {
     responsive: true, 
     // aspectRatio: 1.    
   }
+  constructor(public request: RequestsService) {}
 
   ngOnInit(): void {
-      
+    this.request.history().subscribe((res:any)=>{
+      this.isLoading = false
+      // this.transactions = res.transactions
+      this.totalAmount(res.transactions)
+      console.log(res.transactions)            
+    }, (err:any)=>{
+      this.isLoading = false
+      this.error = 'Error Occured'
+    })
+  }  
+  totalAmount(tray:any){
+    tray.map((each:any, i:any)=>{
+      if (each.type == 'Transfers') {
+        this.transfer += parseInt(each.amount)
+      }
+    })
+    tray.map((each:any, i:any)=>{
+      if (each.type == 'Withdrawals') {
+        this.withdrawal += parseInt(each.amount)
+      }
+    })
+    tray.map((each:any, i:any)=>{
+      if (each.type == 'Others') {
+        this.others += parseInt(each.amount)
+      }
+    })
+    this.lineChartData[0].data = [...this.lineChartData[0].data, this.transfer, this.withdrawal, this.others] as any
+    console.log(this.transfer, this.withdrawal, this.others)
   }
 
 }

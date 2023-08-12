@@ -7,7 +7,7 @@
                     Transactions
                 </mat-card-title>
                 <mat-card-subtitle class="text-end fs-5 pt-2">
-                    {{amount | currency: 'NGN' : 'symbol-narrow'}}
+                    {{transfer + withdrawal + others | currency: 'NGN' : 'symbol-narrow'}}
                 </mat-card-subtitle>
             </mat-card>
         </div>
@@ -17,7 +17,7 @@
                     Transfers
                 </mat-card-title>
                 <mat-card-subtitle class="text-end fs-5 pt-2">
-                    {{amount | currency: 'NGN' : 'symbol-narrow'}}
+                    {{transfer | currency: 'NGN' : 'symbol-narrow'}}
                 </mat-card-subtitle>
             </mat-card>
         </div>
@@ -27,7 +27,7 @@
                     Withdrawals
                 </mat-card-title>
                 <mat-card-subtitle class="text-end fs-5 pt-2">
-                    {{amount | currency: 'NGN' : 'symbol-narrow'}}
+                    {{withdrawal | currency: 'NGN' : 'symbol-narrow'}}
                 </mat-card-subtitle>
             </mat-card>
         </div>
@@ -37,12 +37,12 @@
                     Others
                 </mat-card-title>
                 <mat-card-subtitle class="text-end fs-5 pt-2">
-                    {{amount | currency: 'NGN' : 'symbol-narrow'}}
+                    {{others | currency: 'NGN' : 'symbol-narrow'}}
                 </mat-card-subtitle>
             </mat-card>
         </div>
     </div>
-    <div class="w-100 row my-5 mx-auto">
+    <div class="w-100 row my-5 mx-auto" *ngIf="!isLoading">
         <div class="d-flex justify-content-between">
             <p class="fs-4 fw-bold">Graph Analysis</p>
             <mat-form-field>
