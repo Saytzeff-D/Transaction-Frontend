@@ -1,1 +1,70 @@
-<p>statistics works!</p>
+<div>
+    <p class="fs-4 py-1 fw-bold">Venture Stats</p>
+    <div class="row w-100 mx-auto">
+        <div class="col-md-3">
+            <mat-card class="p-3">
+                <mat-card-title>
+                    Transactions
+                </mat-card-title>
+                <mat-card-subtitle class="text-end fs-5 pt-2">
+                    {{amount | currency: 'NGN' : 'symbol-narrow'}}
+                </mat-card-subtitle>
+            </mat-card>
+        </div>
+        <div class="col-md-3">
+            <mat-card class="p-3">
+                <mat-card-title>
+                    Transfers
+                </mat-card-title>
+                <mat-card-subtitle class="text-end fs-5 pt-2">
+                    {{amount | currency: 'NGN' : 'symbol-narrow'}}
+                </mat-card-subtitle>
+            </mat-card>
+        </div>
+        <div class="col-md-3">
+            <mat-card class="p-3">
+                <mat-card-title>
+                    Withdrawals
+                </mat-card-title>
+                <mat-card-subtitle class="text-end fs-5 pt-2">
+                    {{amount | currency: 'NGN' : 'symbol-narrow'}}
+                </mat-card-subtitle>
+            </mat-card>
+        </div>
+        <div class="col-md-3">
+            <mat-card class="p-3">
+                <mat-card-title>
+                    Others
+                </mat-card-title>
+                <mat-card-subtitle class="text-end fs-5 pt-2">
+                    {{amount | currency: 'NGN' : 'symbol-narrow'}}
+                </mat-card-subtitle>
+            </mat-card>
+        </div>
+    </div>
+    <div class="w-100 row my-5 mx-auto">
+        <div class="d-flex justify-content-between">
+            <p class="fs-4 fw-bold">Graph Analysis</p>
+            <mat-form-field>
+                <mat-label>Filter by</mat-label>
+                <mat-select>
+                    <mat-option>Today</mat-option>
+                    <mat-option>Yesterday</mat-option>
+                    <mat-option>All</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <ul class="ps-5">
+            <li>Line Graph</li>
+        </ul>
+        <div class="col-md-10 h-100">
+            <canvas baseChart [datasets]="lineChartData" [legend]="false" [labels]="chartLabels" [options]="chartOptions"  [type]="'line'"></canvas>
+        </div>
+        <ul class="ps-5 pt-5">
+            <li>Pie Graph</li>
+        </ul>
+        <div class="col-md-10">
+            <canvas baseChart [datasets]="lineChartData" [labels]="chartLabels" [options]="chartOptions"  [type]="'polarArea'"></canvas>
+        </div>
+    </div>
+</div>
