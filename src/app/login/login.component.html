@@ -1,19 +1,19 @@
 <div class="d-flex justify-content-center py-5">
     <div class="col-lg-3 col-md-4 shadow mx-md-0 mx-2">
-        <form class="p-5">
+        <form (ngSubmit)="login()" class="p-md-5 p-4" [formGroup]="loginForm" >
             <p class="text-center fs-3 fw-bolder">DEOT-G</p>
             <p class="text-center fs-4 fw-bold">Transaction Manager</p>
             <p class="fs-6">Login Here</p>
             <mat-form-field appearance="fill" class="w-100 my-1">
                 <mat-label>Enter your Email</mat-label>
-                <input type="email" matInput />
+                <input formControlName="email" type="email" matInput />
             </mat-form-field>
             <mat-form-field appearance="fill" class="w-100 my-1">
                 <mat-label>Enter your Name</mat-label>
-                <input matInput />
+                <input formControlName="name" matInput />
             </mat-form-field>
-            <button mat-raised-button class="bg-dark text-white fw-bold">
-                Login
+            <button type="submit" [disabled]="isLoading" mat-raised-button class="bg-dark text-white fw-bold">
+                {{isLoading ? 'Please wait...' : 'Login'}}
             </button>
         </form>
     </div>
