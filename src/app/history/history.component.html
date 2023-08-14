@@ -24,6 +24,7 @@
             <th>Customer</th>
             <th>Type</th>
             <th>Amount</th>
+            <th>Time</th>
             <th></th>
           </tr>
         </thead>
@@ -33,7 +34,8 @@
             <td class="p-3">{{data.customerName}} </td>
             <td class="p-3"> {{data.type}} </td>
             <td class="p-3"> {{data.amount | currency: 'NGN': 'symbol-narrow'}} </td>
-            <td><i class="fa fa-trash text-danger btn"></i></td>
+            <td class="p-3"> {{data.created_at | date:'shortTime' }} </td>
+            <td><i (click)="delete(data._id)" class="fa fa-trash text-danger btn"></i></td>
           </tr>
         </tbody>
       </table>
