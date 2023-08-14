@@ -18,4 +18,7 @@ export class RequestsService {
   login(payload:any){
     return this.http.post(`${this.api}user/login`, payload)
   }
+  deleteHistory(id:any){
+    return this.http.patch(`${this.api}transact/delete`, id)
+  }
 }
