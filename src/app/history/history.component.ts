@@ -10,7 +10,7 @@ import { RequestsService } from '../services/requests.service';
 })
 export class HistoryComponent implements OnInit, AfterViewInit {
   public isLoading = true
-  public isDeleting = true
+  public isDeleting = false
   public error = ''
 
   public dataSource:any = []
@@ -23,8 +23,7 @@ export class HistoryComponent implements OnInit, AfterViewInit {
     console.log(this.offset)
     this.request.history().subscribe((res:any)=>{
       this.isLoading = false
-      this.dataSource = res.transactions
-      console.log(res.transactions)            
+      this.dataSource = res.transactions               
     }, (err:any)=>{
       this.isLoading = false
       this.error = 'Error Occured'
@@ -34,11 +33,13 @@ export class HistoryComponent implements OnInit, AfterViewInit {
     // this.dataSource.paginator = this.paginator;
   }
   delete(id:any){
-    console.log(id)
+    this.isDeleting = true
     this.request.deleteHistory({id: id}).subscribe(res=>{
       this.dataSource = this.dataSource.filter((each:any, i:any)=>(each._id !== id))
+      this.isDeleting = false
     }, err=>{
       console.log(err)
+      this.isDeleting = false
     })
   }
 

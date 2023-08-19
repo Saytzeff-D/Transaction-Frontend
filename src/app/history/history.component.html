@@ -1,6 +1,6 @@
 <div>
     <div class="d-flex justify-content-between">
-        <p class="fs-4">History</p>
+        <p class="fs-4">Today's History</p>
         <!-- <mat-form-field>
             <mat-label>Filter</mat-label>
             <mat-select>
@@ -35,10 +35,12 @@
             <td class="p-3"> {{data.type}} </td>
             <td class="p-3"> {{data.amount | currency: 'NGN': 'symbol-narrow'}} </td>
             <td class="p-3"> {{data.created_at | date:'shortTime' }} </td>
-            <td><i (click)="delete(data._id)" class="fa fa-trash text-danger btn"></i></td>
+            <td>
+              <span *ngIf="isDeleting" class="spinner-border spinner-border-sm text-danger"></span><i *ngIf="!isDeleting" (click)="delete(data._id)" class="fa fa-trash text-danger btn"></i>              
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-      
+    <mat-progress-bar mode="query" *ngIf="isLoading"></mat-progress-bar>
 </div>
