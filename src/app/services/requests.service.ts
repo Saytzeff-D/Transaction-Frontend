@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class RequestsService {
   public api = 'https://transact-backend.onrender.com/'
+  // public api = 'http://localhost:8080/'
 
   constructor(public http: HttpClient) { }
 
