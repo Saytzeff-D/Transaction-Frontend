@@ -49,17 +49,17 @@ export class StatisticsComponent implements OnInit {
   totalAmount(tray:any){
     tray.map((each:any, i:any)=>{
       if (each.type == 'Transfers') {
-        this.transfer += parseInt(each.amount)
+        this.transfer += parseFloat(each.amount)
       }
     })
     tray.map((each:any, i:any)=>{
       if (each.type == 'Withdrawals') {
-        this.withdrawal += parseInt(each.amount)
+        this.withdrawal += parseFloat(each.amount)
       }
     })
     tray.map((each:any, i:any)=>{
       if (each.type == 'Others') {
-        this.others += parseInt(each.amount)
+        this.others += parseFloat(each.amount)
       }
     })
     this.lineChartData[0].data = [...this.lineChartData[0].data, this.transfer, this.withdrawal, this.others] as any
